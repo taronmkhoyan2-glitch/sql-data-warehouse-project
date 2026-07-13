@@ -79,3 +79,23 @@ case when trim(cntry)='DE' then 'Germany'
 	 else TRIM(cntry)
 end as cntry
 from bronze.erp_loc_a101
+
+
+--check spaces for bronze.erp_px_cat_g1v2
+select
+*
+from bronze.erp_px_cat_g1v2
+where cat!=TRIM(cat) or trim(subcat)!=subcat or trim(maintenance)!=maintenance
+
+--check the data standartization
+select distinct
+cat
+from bronze.erp_px_cat_g1v2
+
+select distinct
+subcat
+from bronze.erp_px_cat_g1v2
+
+select distinct
+maintenance
+from bronze.erp_px_cat_g1v2
