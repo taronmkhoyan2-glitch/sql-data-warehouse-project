@@ -99,3 +99,70 @@ from bronze.erp_px_cat_g1v2
 select distinct
 maintenance
 from bronze.erp_px_cat_g1v2
+
+
+
+--check for unwanted Spaces
+--other columns do not have spaces
+
+
+
+
+CREATE OR ALTER PROCEDURE silver.load_silver AS
+
+
+select cst_firstname
+from bronze.crm_cust_info
+where cst_firstname!=trim(cst_firstname)
+go
+
+select cst_lastname
+from bronze.crm_cust_info
+where cst_lastname!=trim(cst_lastname)
+
+
+--Checking Nulls and dups for primary key
+
+
+--checkinh Nulls
+select
+cst_id,
+count (*)
+from bronze.crm_cust_info
+group by cst_id
+having count(*)>1 or cst_id is null
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
